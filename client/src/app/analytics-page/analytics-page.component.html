@@ -1,0 +1,50 @@
+<div class="page-title">
+  <h4>Аналитика</h4>
+</div>
+
+<div
+  *ngIf="!pending ; else loader"
+>
+  <div class="average-price">
+    <p>Средний чек <strong>{{average}} грн.</strong></p>
+  </div>
+
+  <div class="analytics-block pb3"*ngIf="!pending">
+    <h5>Выручка</h5>
+    <canvas
+            baseChart
+            [datasets]="gainChartData"
+            [labels]="lineChartLabels"
+            [options]="lineChartOptions"
+            [colors]="lineChartColors"
+            [legend]="lineChartLegend"
+            [chartType]="lineChartType"
+            [plugins]="lineChartPlugins"
+            height="50"
+            width="300">
+    </canvas>
+  </div>
+
+  <div class="analytics-block">
+    <h5>Заказы</h5>
+    <canvas
+      baseChart
+      [datasets]="ordersChartData"
+      [labels]="lineChartLabels"
+      [options]="lineChartOptions"
+      [colors]="lineChartColors"
+
+      [chartType]="lineChartType"
+      [plugins]="lineChartPlugins"
+      height="50"
+      width="300">
+    </canvas>
+  </div>
+</div>
+
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>
+
+
+
